@@ -10,6 +10,7 @@ public interface ToolServiceInterface {
     Optional<Tool> getToolById(Long id);
     List<Tool> getToolByNumber(String number);
     boolean addTool(Tool tool);
-    boolean editTool(Tool tool);
+    boolean editTool(Tool editTool);
+    boolean editToolProduct(long id, String product);
     boolean removeToolById(long id);
 }

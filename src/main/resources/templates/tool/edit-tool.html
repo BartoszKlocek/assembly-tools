@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add tool</title>
+    <title>Edit car</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -10,8 +10,12 @@
 <div class="row">
     <div class="col"></div>
     <div class="col">
-        <h2>Add tool</h2>
-        <form th:action="@{/tools/add}" th:object="${tool}" th:method="post">
+        <h2>Edit Tool</h2>
+        <form th:action="@{/tools/edit}" th:object="${Tool}" th:method="post">
+            <input type="hidden" class="form-control" th:field="${tool.id}" name="id">
+
+<!--            &#45;&#45;&#45;&#45;&#45;&#45;-->
+
             <div class="form-group">
                 <label>Tool number</label>
                 <input type="text" class="form-control" th:field="${tool.toolNumber}" name="toolNumber">
@@ -20,14 +24,16 @@
                 <label for="exampleFormControlSelect1">Status</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="status">
                     <option></option>
-                    <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
+                    <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"
+                    th:selected="${status.equals(tool.status)}"></option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Line</label>
                 <select class="form-control" id="exampleFormControlSelect2" name="line">
                     <option></option>
-                    <option th:each="line : ${lines}" th:value="${line}" th:text="${line}"></option>
+                    <option th:each="line : ${lines}" th:value="${line}" th:text="${line}"
+                    th:selected="${line.equals(tool.line)}"></option>
                 </select>
             </div>
 
@@ -44,15 +50,10 @@
                 <input type="text" class="form-control" th:field="${tool.comments}" name="comments">
             </div>
 
+<!--            &#45;&#45;&#45;&#45;&#45;&#45;-->
 
 
-<!--            <div class="form-group">-->
-<!--                <label for="exampleFormControlSelect1">Color</label>-->
-<!--                <select class="form-control" id="exampleFormControlSelect1" name="color">-->
-<!--                    <option></option>-->
-<!--                    <option th:each="color : ${colors}" th:value="${color}" th:text="${color}"></option>-->
-<!--                </select>-->
-<!--            </div>-->
+
             <button type="submit" class="btn btn-warning btn-lg btn-block">Submit</button>
         </form>
     </div>

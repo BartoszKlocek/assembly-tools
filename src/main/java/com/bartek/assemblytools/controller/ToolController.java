@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/tools")
 public class ToolController {
@@ -21,13 +23,13 @@ public class ToolController {
     }
 
     @GetMapping
-    public String getTools(Model model){
-        model.addAttribute("tools",toolService.getTools());
+    public String getTools(Model model) {
+        model.addAttribute("tools", toolService.getTools());
         return "tool/tools";
     }
 
     @GetMapping("/add")
-    public String getAddTool(Model model){
+    public String getAddTool(Model model) {
         model.addAttribute("tool", new Tool());
         model.addAttribute("statuses", Status.values());
         model.addAttribute("lines", Line.values());
@@ -35,16 +37,31 @@ public class ToolController {
     }
 
     @PostMapping("/add")
-    public String addTool(@ModelAttribute Tool tool){
+    public String addTool(@ModelAttribute Tool tool) {
         toolService.addTool(tool);
         return "redirect:/tools";
     }
+
     @GetMapping("delete/{id}")
-    public String removeToolById(@PathVariable long id){
+    public String removeToolById(@PathVariable long id) {
         toolService.removeToolById(id);
         return "redirect:/tools";
     }
 
+    @GetMapping("/edit/{id}")
+    public String getToolById(@PathVariable long id, Model model) {
+        Optional<Tool> tool = toolService.getToolById(id);
+        model.addAttribute("tool", tool.get());
+        model.addAttribute("statuses", Status.values());
+        model.addAttribute("lines", Line.values());
+        return "tool/edit-tool";
+    }
+
+    @PostMapping("/edit")
+    public String edit(@ModelAttribute Tool tool) {
+        toolService.editTool(tool);
+        return "redirect:/tools";
+    }
 
 
 }
