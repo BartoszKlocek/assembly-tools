@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/tools")
@@ -25,6 +27,20 @@ public class ToolController {
     @GetMapping
     public String getTools(Model model) {
         model.addAttribute("tools", toolService.getTools());
+        return "tool/tools";
+    }
+
+    @PostMapping
+    public String getToolsSearch(Model model, @RequestParam("toolNumber") String toolNumber) {
+        List<Tool> tools = toolService.getTools();
+
+        if (toolNumber != null && !toolNumber.trim().isEmpty()) {
+            tools = tools.stream()
+                    .filter(t -> t.getToolNumber().contains(toolNumber))
+                    .collect(Collectors.toList());
+        }
+
+        model.addAttribute("tools", tools);
         return "tool/tools";
     }
 

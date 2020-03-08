@@ -13,72 +13,92 @@
 <!--    <a type="button" class="btn btn-success btn-lg btn-block" th:href="@{/cars/add}">Add car</a></container>-->
 <container>
     <h1>ASSEMBLY TOOLS</h1>
-<br>
-<br>
-    <a type="button" class="btn btn-primary" th:href="@{tools/add}">ADD TOOL</a>
     <br>
-    <table class="table">
-        <div class="container">
-            <!-- Content here -->
-
-            <div class="col-md-6 .offset-md-3.mx-auto">
-
-
-                <table class="table table-bordered table-dark">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">TOOL NUMBER</th>
-                        <th scope="col">STATUS</th>
-                        <th scope="col">DATE</th>
-                        <th scope="col">TOOL LOCALIZATION</th>
-                        <th scope="col">PRODUCT</th>
-                        <th scope="col">PERSON NAME</th>
-                        <th scope="col">COMMENTS</th>
-                        <th scope="col">ACTION</th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="tool : ${tools}">
-
-                        <td scope="=row" th:text="${tool.getId()}"></td>
-                        <td th:text="${tool.getToolNumber()}"></td>
-                        <td th:text="${tool.getStatus()}"></td>
-                        <td th:text="${tool.getDateOfTransfer()}"></td>
-                        <td th:text="${tool.getLine()}"></td>
-                        <td th:text="${tool.getProduct()}"></td>
-                        <td th:text="${tool.getWhoName()}"></td>
-                        <td th:text="${tool.getComments()}"></td>
-
-
-                        <td>
-                            <a type="button" class="btn btn-primary" th:href="@{|/tools/edit/${tool.id}|}">Edit</a>
-
-                            <a type="button" class="btn btn-danger" th:href="@{|/tools/delete/${tool.id}|}">Delete</a>
-                        </td>
-
-                    </tr>
-                    </tbody>
-                    <br/>
-
-                    </tr>
-                </table>
-            </div>
+    <br>
+    <div class="col">
+        <a type="button" class="btn btn-primary" th:href="@{tools/add}">ADD TOOL</a>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form th:action="@{/tools}" th:method="post">
+                <div class="form-group">
+                    <label>Tool number</label>
+                    <input type="text" class="form-control" name="toolNumber">
+                </div>
+                <button type="submit" class="btn btn-warning btn-lg btn-block">Search</button>
+            </form>
         </div>
-        <!--        <tbody>-->
-        <!--        <tr th:each="car : ${cars}">-->
-        <!--            <th scope="row" th:text="${car.id}"></th>-->
-        <!--            <td th:text="${car.mark}"></td>-->
-        <!--            <td th:text="${car.model}"></td>-->
-        <!--            <td th:text="${car.color}"></td>-->
-        <!--            <th>-->
-        <!--                <a type="button" class="btn btn-outline-warning" th:href="@{|/cars/modify/${car.id}|}">Edit</a>-->
-        <!--                <a type="button" class="btn btn-outline-danger" th:href="@{|/cars/delete/${car.id}|}">Delete</a>-->
-        <!--            </th>-->
-        <!--        </tr>-->
-        <!--        </tbody>-->
-    </table>
+        <div class="col"></div>
+    </div>
+
+    <div class="col">
+        <table class="table">
+            <div class="container">
+                <!-- Content here -->
+
+                <div class="col-md-6 .offset-md-3.mx-auto">
+
+
+                    <table class="table table-bordered table-dark">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">TOOL NUMBER</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">DATE</th>
+                            <th scope="col">TOOL LOCALIZATION</th>
+                            <th scope="col">PRODUCT</th>
+                            <th scope="col">PERSON NAME</th>
+                            <th scope="col">COMMENTS</th>
+                            <th scope="col">ACTION</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="tool : ${tools}">
+
+                            <td scope="=row" th:text="${tool.getId()}"></td>
+                            <td th:text="${tool.getToolNumber()}"></td>
+                            <td th:text="${tool.getStatus()}"></td>
+                            <td th:text="${tool.getDateOfTransfer()}"></td>
+                            <td th:text="${tool.getLine()}"></td>
+                            <td th:text="${tool.getProduct()}"></td>
+                            <td th:text="${tool.getWhoName()}"></td>
+                            <td th:text="${tool.getComments()}"></td>
+
+
+                            <td>
+                                <a type="button" class="btn btn-primary"
+                                   th:href="@{|/tools/edit/${tool.id}|}">Edit</a>
+
+                                <a type="button" class="btn btn-danger"
+                                   th:href="@{|/tools/delete/${tool.id}|}">Delete</a>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                        <br/>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--        <tbody>-->
+            <!--        <tr th:each="car : ${cars}">-->
+            <!--            <th scope="row" th:text="${car.id}"></th>-->
+            <!--            <td th:text="${car.mark}"></td>-->
+            <!--            <td th:text="${car.model}"></td>-->
+            <!--            <td th:text="${car.color}"></td>-->
+            <!--            <th>-->
+            <!--                <a type="button" class="btn btn-outline-warning" th:href="@{|/cars/modify/${car.id}|}">Edit</a>-->
+            <!--                <a type="button" class="btn btn-outline-danger" th:href="@{|/cars/delete/${car.id}|}">Delete</a>-->
+            <!--            </th>-->
+            <!--        </tr>-->
+            <!--        </tbody>-->
+        </table>
+    </div>
     <br>
     <br>
 
