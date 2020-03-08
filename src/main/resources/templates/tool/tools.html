@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tools list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+<!--<container>-->
+<!--    -->
+<!--    <a type="button" class="btn btn-success btn-lg btn-block" th:href="@{/cars/add}">Add car</a></container>-->
+<container>
+    <h1>ASSEMBLY TOOLS</h1>
+<br>
+<br>
+    <a type="button" class="btn btn-primary" th:href="@{tools/add}">ADD TOOL</a>
+    <br>
+    <table class="table">
+        <div class="container">
+            <!-- Content here -->
+
+            <div class="col-md-6 .offset-md-3.mx-auto">
+
+
+                <table class="table table-bordered table-dark">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">TOOL NUMBER</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">TOOL LOCALIZATION</th>
+                        <th scope="col">PRODUCT</th>
+                        <th scope="col">PERSON NAME</th>
+                        <th scope="col">COMMENTS</th>
+                        <th scope="col">ACTION</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="tool : ${tools}">
+
+                        <td scope="=row" th:text="${tool.getId()}"></td>
+                        <td th:text="${tool.getToolNumber()}"></td>
+                        <td th:text="${tool.getStatus()}"></td>
+                        <td th:text="${tool.getDateOfTransfer()}"></td>
+                        <td th:text="${tool.getLine()}"></td>
+                        <td th:text="${tool.getProduct()}"></td>
+                        <td th:text="${tool.getWhoName()}"></td>
+                        <td th:text="${tool.getComments()}"></td>
+
+
+                        <td>
+                            <a type="button" class="btn btn-primary">Edit</a>
+
+                            <a type="button" class="btn btn-danger" th:href="@{|/tools/delete/${tool.id}|}">Delete</a>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                    <br/>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--        <tbody>-->
+        <!--        <tr th:each="car : ${cars}">-->
+        <!--            <th scope="row" th:text="${car.id}"></th>-->
+        <!--            <td th:text="${car.mark}"></td>-->
+        <!--            <td th:text="${car.model}"></td>-->
+        <!--            <td th:text="${car.color}"></td>-->
+        <!--            <th>-->
+        <!--                <a type="button" class="btn btn-outline-warning" th:href="@{|/cars/modify/${car.id}|}">Edit</a>-->
+        <!--                <a type="button" class="btn btn-outline-danger" th:href="@{|/cars/delete/${car.id}|}">Delete</a>-->
+        <!--            </th>-->
+        <!--        </tr>-->
+        <!--        </tbody>-->
+    </table>
+    <br>
+    <br>
+
+
+</container>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

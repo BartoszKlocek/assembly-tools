@@ -1,0 +1,16 @@
+package com.bartek.assemblytools.model.enums;
+
+public enum Line {
+    L1,L2,L3,L4,L5,L6,L7,L8,L9,L10,L11,L12,L13,L14,L15,L16,L17,L18,L19,L20,L21,
+    REWORK,REWORK_B3,
+    ROTORS,
+    CONTROL_STATION_1,
+    CONTROL_STATION_2,
+    CONTROL_STATION_3,
+    CONTROL_STATION_4,
+    CONTROL_STATION_5,
+    FINAL_CONTROL,
+    PAINTSHOP,
+    COOPERATION,
+    ISL
+}
